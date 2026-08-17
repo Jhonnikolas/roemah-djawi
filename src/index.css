@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  /* Ukuran dasar teks sedikit diperbesar agar seluruh situs lebih mudah
+     dibaca, terutama untuk pengguna baru / kurang terbiasa dengan layar kecil. */
+  font-size: 17px;
+}
+
+body {
+  @apply bg-gading text-ink font-body antialiased;
+}
+
+/* Ramah Lansia: sebagian pengguna lanjut usia sensitif terhadap animasi/gerakan
+   (motion sensitivity). Jika perangkat/browser mereka mengaktifkan "reduce motion",
+   semua animasi & transisi otomatis dipercepat/dimatikan. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Garis pemisah bermotif "parang" khas batik Jawa - jadi elemen signature berulang */
+.motif-divider {
+  height: 3px;
+  background-image: repeating-linear-gradient(
+    135deg,
+    theme('colors.emas.DEFAULT') 0px,
+    theme('colors.emas.DEFAULT') 6px,
+    transparent 6px,
+    transparent 12px
+  );
+  opacity: 0.5;
+}
+
+/* Fokus keyboard tetap terlihat jelas untuk aksesibilitas */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid theme('colors.emas.DEFAULT');
+  outline-offset: 2px;
+}
